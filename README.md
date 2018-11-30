@@ -8,7 +8,7 @@ The d2v.jar file takes two arguments:
 <ul>
 <li> -w for the number of windows
 <li> -l for the event log (which should be XES-based, don't include the .xes extension)
-<\ul>
+</ul>
 E.g. java -jar d2v.jar -w 10 -l BPI_Challenge_2012
 
 ## Convolutional recurrent neural network
@@ -19,4 +19,4 @@ The Python files can be used for training a model, and the subsequent testing. T
 <li> no_lstms: additional layers of CONVLSTMs
 <li> no_epochs: the number of epochs to traing over the network
 <li> cutoff: set to 1, it reads full traces, set to 2, it leaves a gap between input and output window
-<\ul>
+</ul>
