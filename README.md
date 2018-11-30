@@ -5,9 +5,10 @@ This project provides both a Java-based feature generation procedure for generat
 ## Feature generation
 The feature generation procedure uses iBCM (https://feb.kuleuven.be/public/u0092789/) to find constraints present in execution traces, and stores them in a .txt file.
 The d2v.jar file takes two arguments:
--- -w for the number of windows
--- -l for the event log (which should be XES-based, don't include the .xes extension)
-
+<ul>
+<li> -w for the number of windows
+<li> -l for the event log (which should be XES-based, don't include the .xes extension)
+<\ul>
 E.g. java -jar d2v.jar -w 10 -l BPI_Challenge_2012
 
 ## Convolutional recurrent neural network
