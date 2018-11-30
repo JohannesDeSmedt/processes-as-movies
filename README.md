@@ -11,7 +11,7 @@ The d2v.jar file takes two arguments:
 </ul>
 Inline `java -jar d2v.jar -w 10 -l BPI_Challenge_2012` has `back-ticks around` it.
 
-Inline `code` has `back-ticks around` it.
+Inline `java -jar d2v.jar -w 10 -l BPI_Challenge_2012`` it.
 
 ## Convolutional recurrent neural network
 The Python files can be used for training a model, and the subsequent testing. There are a number of parameters, which can be set in the code itself:
