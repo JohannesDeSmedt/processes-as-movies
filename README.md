@@ -13,9 +13,9 @@ The d2v.jar file takes two arguments:
 For example: `java -jar d2v.jar -w 10 -l BPI_Challenge_2012` 
 
 The logs used to create the datasets in /datasets are:
---* https://data.4tu.nl/repository/uuid:5f3067df-f10b-45da-b98b-86ae4c7a310b
---* https://data.4tu.nl/repository/uuid:3926db30-f712-4394-aebc-75976070e91f
---* https://data.4tu.nl/repository/uuid:500573e6-accc-4b0c-9576-aa5468b10cee
+* https://data.4tu.nl/repository/uuid:5f3067df-f10b-45da-b98b-86ae4c7a310b
+* https://data.4tu.nl/repository/uuid:3926db30-f712-4394-aebc-75976070e91f
+* https://data.4tu.nl/repository/uuid:500573e6-accc-4b0c-9576-aa5468b10cee
 
 ## Convolutional recurrent neural network
 The Python files can be used for training a model, and the subsequent testing. There are a number of parameters, which can be set in the code itself:
