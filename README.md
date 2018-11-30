@@ -13,8 +13,10 @@ E.g. java -jar d2v.jar -w 10 -l BPI_Challenge_2012
 
 ## Convolutional recurrent neural network
 The Python files can be used for training a model, and the subsequent testing. There are a number of parameters, which can be set in the code itself:
--- filt: number of filters to be used for max pooling
--- ks: kernel size
--- no_lstms: additional layers of CONVLSTMs
--- no_epochs: the number of epochs to traing over the network
--- cutoff: set to 1, it reads full traces, set to 2, it leaves a gap between input and output window
+<ul>
+<li> filt: number of filters to be used for max pooling
+<li> ks: kernel size
+<li> no_lstms: additional layers of CONVLSTMs
+<li> no_epochs: the number of epochs to traing over the network
+<li> cutoff: set to 1, it reads full traces, set to 2, it leaves a gap between input and output window
+  <\ul>
