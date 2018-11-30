@@ -7,7 +7,7 @@ The feature generation procedure uses [iBCM](https://feb.kuleuven.be/public/u009
 The d2v.jar file takes two arguments:
 <ul>
 <li> -w for the number of windows
-<li> -l for the event log (which should be [XES-based](http://www.xes-standard.org/openxes/start), don't include the .xes extension)
+<li> -l for the event log (which should be [XES-based]( http://www.xes-standard.org/openxes/start), don't include the .xes extension)
 </ul>
 E.g. java -jar d2v.jar -w 10 -l BPI_Challenge_2012
 
