@@ -17,7 +17,7 @@ The logs used to create the datasets in /datasets are:
 
 ## Convolutional recurrent neural network
 The Python files can be used for training a model, and the subsequent testing. There are a number of parameters, which can be set in the code itself:
-* filt: number of filters to be used for max pooling
+* `filt`: number of filters to be used for max pooling
 * ks: kernel size
 * no_lstms: additional layers of CONVLSTMs
 * no_epochs: the number of epochs to traing over the network
