@@ -19,4 +19,4 @@ The Python files can be used for training a model, and the subsequent testing. T
 <li> no_lstms: additional layers of CONVLSTMs
 <li> no_epochs: the number of epochs to traing over the network
 <li> cutoff: set to 1, it reads full traces, set to 2, it leaves a gap between input and output window
-  <\ul>
+<\ul>
