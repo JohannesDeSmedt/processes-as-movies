@@ -135,7 +135,9 @@ def runLSTM(no_epochs, data_X, data_y, no_traces, no_win, no_act, no_con):
 ##############
 ### Main code
 dataset = 'bpi17_5'
-limit = 40000
+
+# Limits the number of traces used
+limit = 1000
 cutoff = 1
 filt = 8
 ks = 4
@@ -150,10 +152,10 @@ data_X, data_y, no_traces, no_win, no_act, no_con = prepareDataConv()
 print(dataset+ " loaded")
 
 print("\n\n\n########### New iteration ############")
-print('#Kernel size: ',ks)
-print('#Filters: ',fil)
-print('#Epochs: ',no_epochs)
-print('#LSTM layers: ',lstms)
-print('Cutoff: ',cutoff)                  
+print('#Kernel size: ', ks)
+print('#Filters: ', filt)
+print('#Epochs: ', no_epochs)
+print('#LSTM layers: ', no_lstms)
+print('Cutoff: ', cutoff)                  
       
 runLSTM(no_epochs, data_X, data_y, no_traces, no_win, no_act, no_con)
