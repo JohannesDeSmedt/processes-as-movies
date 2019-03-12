@@ -58,7 +58,7 @@ def prepareDataConv():
             if no_traces%1000==0:
                 print('new trace '+str(no_traces))
             traces_X.append(array(window_list[:-cutoff]))
-            traces_y.append(array(window_list[cutoff:]))
+            traces_y.append(array(window_list[-1]))
             no_traces += 1
             window_list = []
             
@@ -85,11 +85,14 @@ def prepareDataConv():
             p+=1
     traces_X = array(traces_X)
     traces_y = array(traces_y)
+    traces_y = np.reshape(traces_y, (len(traces_y), 1, 24,24,14))
             
     print('#act: \t'+str(no_act))
     print('#constraints: \t'+str(no_con))
     print('#traces: \t'+str(no_traces))
     print('#windows: \t'+str(no_win))
+    print(np.shape(traces_X))
+    print(np.shape(traces_y))
     return traces_X, traces_y, no_traces, no_win-1, no_act, no_con
 
 def runLSTM(no_epochs, data_X, data_y, no_traces, no_win, no_act, no_con):
@@ -100,14 +103,14 @@ def runLSTM(no_epochs, data_X, data_y, no_traces, no_win, no_act, no_con):
     model = Sequential()
     model.add(ConvLSTM2D(filters=filt, kernel_size=(ks, ks),
                        input_shape=(None, no_act, no_act, no_con),
-                       padding='same', return_sequences=True))
+                       padding='same', return_sequences=False))
     model.add(BatchNormalization())
     
     for i in range(0,no_lstms):
         model.add(ConvLSTM2D(filters=filt, kernel_size=(ks, ks),
-                       padding='same', return_sequences=True))
+                       padding='same', return_sequences=False))
         model.add(BatchNormalization())
-    
+   
     
     model.add(Conv3D(filters=no_con, kernel_size=(ks, ks, ks),
                    activation='sigmoid',
@@ -134,13 +137,17 @@ def runLSTM(no_epochs, data_X, data_y, no_traces, no_win, no_act, no_con):
 
 ##############
 ### Main code
-dataset = 'bpi17_5'
+dataset = 'bpi12_10'
 
 # Limits the number of traces used
 limit = 1000
+# Number of windows to skip
 cutoff = 1
+# Filter size
 filt = 8
+# Kernel size
 ks = 4
+# Number of extra LSTM layers
 no_lstms = 1    
 no_epochs = 15
 

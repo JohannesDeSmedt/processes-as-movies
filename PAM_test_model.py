@@ -19,6 +19,10 @@ from keras.preprocessing import sequence
 from numpy import array
 from sklearn.model_selection import train_test_split
 from keras.utils import to_categorical
+from sklearn.metrics import recall_score, precision_score, roc_auc_score
+from sklearn.metrics import roc_curve, precision_recall_curve, average_precision_score
+from sklearn.utils.fixes import signature
+import matplotlib.pyplot as plt
 
 class TimeHistory(keras.callbacks.Callback):
     def on_train_begin(self, logs={}):
@@ -103,21 +107,6 @@ def prepareDataConv():
     print('#windows: \t'+str(no_win))
     return traces_X, traces_y, no_traces, no_win-1, no_act, no_con
 
-def printConCon(i,tp,fp,fn,tn):
-    acc = (tp+tn)/(tp+fp+fn+tn)
-    rec = tp/(tp+fn)
-    pre = tp/(tp+fp)
-    spe = tn/(tn+fp)
-    fal = fp/(fp+tp)
-    print('tp: ',tp," fp: ",fp," fn: ",fn," tn: ",tn)
-    print('Accuracy: ', acc)
-    print('Recall: ', rec)
-    print('Precision: ', pre)
-    print('Specificity: ', spe)
-    print('Fall-out: ', fal)
-    out = constraints[i]+","+str(ks)+","+str(fil)+","+str(no_epochs)+","+str(lstms)+","+str(tp)+","+str(fp)+","+str(fn)+","+str(tn)
-    output.append(out)
-
 def check_results():
            
     train_x, test_x, train_y, test_y = train_test_split(data_X,data_y,test_size=0.2)
@@ -136,76 +125,84 @@ def check_results():
         
     model = loaded_model
 #    print('Prediction: \n'+str(loaded_model.predict(test_x[np.newaxis, 2, ::, ::, ::])))
-    tp = np.zeros(no_con)
-    fp = np.zeros(no_con)
-    fn = np.zeros(no_con)
-    tn = np.zeros(no_con)
-    thres = 0.25
+
     print_size = int(len(test_y)/20)
     
-    print('Generating predictions: ')
+    print('Generating predictions: ')    
+    y_pred = np.zeros((len(test_y), no_win, no_act, no_act, no_con), dtype=np.float32)
+    y_pred_i = np.zeros((len(test_y), no_win, no_act, no_act, no_con), dtype=np.int32)
+    y_val = np.zeros((len(test_y), no_win, no_act, no_act, no_con), dtype=np.int32)
     
+    sc = 0
     for tr in range(0,len(test_y)):  
         for t, trace in enumerate(test_y[np.newaxis, tr, ::, ::, ::]):
             if tr%print_size==0:
-                print("Trace: ", tr)
+                print("Trace: ", tr,' #',sc,'/20')
+                sc += 1
             prediction = model.predict(test_x[np.newaxis, tr, ::, ::, ::])
             for w, window in enumerate(trace):
                 for a, act in enumerate(window):
                     for a2, act2 in enumerate(act):
                         for c, con in enumerate(act2):
-                            x_act = prediction[0,w,a,a2]
-                            if act2[c] > thres and x_act[c] > thres:
-                                tp[c] += 1
-                            if act2[c] > thres and x_act[c] < thres:
-                                fp[c] += 1
-                            if act2[c] < thres and x_act[c] > thres:
-                                fn[c] += 1
-                            if act2[c] < thres and x_act[c] < thres:
-                                tn[c] += 1                                      
-    for i in range(0,no_con):
-        print('\nConstraint: ',constraints[i])
-        printConCon(i,tp[i],fp[i],fn[i],tn[i])
-    tp = np.sum(tp)
-    fp = np.sum(fp)
-    fn = np.sum(fn)
-    tn = np.sum(tn)
-    return tp, fp, fn, tn
+                            pred = prediction[0,w,a,a2,c]
+                            act = trace[w,a,a2,c]
+                            y_val[tr,w,a,a2,c] = act
+                            y_pred[tr,w,a,a2,c] = pred  
+
+    y_pred = np.reshape(y_pred,(len(y_val)*no_win*no_act*no_act*no_con))
+    y_val = np.reshape(y_val,(len(y_val)*no_win*no_act*no_act*no_con))   
+    y_pred_i = np.reshape(y_pred_i,(len(y_pred_i)*no_win*no_act*no_act*no_con))
+        
+    # Finding threshold
+    average_precision = average_precision_score(y_val, y_pred)
+    precision, recall, pr_thres = precision_recall_curve(y_val,y_pred)
+    best_score = 0
+    best_thres = 0
+    for thres, prec, rec in zip(pr_thres, precision, recall):
+        if (2*(prec*rec)/(prec+rec)) > best_score:
+            best_thres= thres
+            best_score= 2*(prec*rec)/(prec+rec)
+    print('Best threshold for F-score: ', best_thres)
+    print('Average precision: ', average_precision)
+    for i in range(0,len(y_pred)):
+        if y_pred[i]>=best_thres:
+            y_pred_i[i] = 1
+
+    auc = roc_auc_score(y_val, y_pred)
+    recall = recall_score(y_val, y_pred_i)
+    precision = precision_score(y_val, y_pred_i)
+    fscore = 2*(precision*recall)/(precision+recall)
+    print('AUC: ', auc)   
+    print('Recall: ', recall)  
+    print('Precision: ', precision)                   
+    print('F-score: ', fscore)   
+
+    return average_precision, auc, recall, precision, fscore
+
 
 ##############
 ### Main code 
-dataset = 'bpi17_5'
-limit = 40000
+dataset = 'bpi12_5'
+limit = 100000
 cutoff = 1
-filt = 8
-ks = 4
-no_lstms = 1    
+filt = 9
+ks = 9
+no_lstms = 0
 no_epochs = 15
-   
+
 
 output = []
-output.append('element,ks,nofilt,noepoch,nolstsms,tp,fp,fn,tn')
+output.append('element,ks,nofilt,noepoch,nolstsms,avprec,auc,recall,precision,fscore')
 
 print("Loading data")
 data_X, data_y, no_traces, no_win, no_act, no_con = prepareDataConv()
 print(dataset+ " loaded")
 
-tp, fp, fn, tn = check_results()
-acc = (tp+tn)/(tp+fp+fn+tn)
-rec = tp/(tp+fn)
-pre = tp/(tp+fp)
-spe = tn/(tn+fp)
-fal = fp/(fp+tp)
-
-print('\nTotal: ')
-print('Accuracy: ', acc)
-print('Recall: ', rec)
-print('Precision: ', pre)
-print('Specificity: ', spe)
-print('Fall-out: ', fal)
-out = 'total,'+str(ks)+","+str(filt)+","+str(no_epochs)+","+str(no_lstms)+","+str(tp)+","+str(fp)+","+str(fn)+","+str(tn)
+ap, auc, rec, prec, fs = check_results()
+out = 'total,'+str(ks)+","+str(filt)+","+str(no_epochs)+","+str(no_lstms)+","+str(ap)+","+str(auc)+","+str(rec)+","+str(prec)+","+str(fs)
 output.append(out)
-    
+
+
 outfile = open('output_co'+str(cutoff)+"_"+dataset+".csv", 'w')
 for line in output:
     outfile.write(line+"\n")
