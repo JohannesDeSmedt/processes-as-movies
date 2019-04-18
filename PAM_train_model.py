@@ -103,12 +103,12 @@ def runLSTM(no_epochs, data_X, data_y, no_traces, no_win, no_act, no_con):
     model = Sequential()
     model.add(ConvLSTM2D(filters=filt, kernel_size=(ks, ks),
                        input_shape=(None, no_act, no_act, no_con),
-                       padding='same', return_sequences=False))
+                       padding='same', return_sequences=True))
     model.add(BatchNormalization())
     
     for i in range(0,no_lstms):
         model.add(ConvLSTM2D(filters=filt, kernel_size=(ks, ks),
-                       padding='same', return_sequences=False))
+                       padding='same', return_sequences=True))
         model.add(BatchNormalization())
    
     
@@ -137,7 +137,7 @@ def runLSTM(no_epochs, data_X, data_y, no_traces, no_win, no_act, no_con):
 
 ##############
 ### Main code
-dataset = 'bpi12_10'
+dataset = 'bpi12_5'
 
 # Limits the number of traces used
 limit = 1000
