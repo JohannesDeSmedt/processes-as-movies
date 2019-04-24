@@ -58,7 +58,7 @@ def prepareDataConv():
             if no_traces%1000==0:
                 print('new trace '+str(no_traces))
             traces_X.append(array(window_list[:-cutoff]))
-            traces_y.append(array(window_list[-1]))
+            traces_y.append(array(window_list[cutoff:]))
             no_traces += 1
             window_list = []
             
@@ -85,7 +85,7 @@ def prepareDataConv():
             p+=1
     traces_X = array(traces_X)
     traces_y = array(traces_y)
-    traces_y = np.reshape(traces_y, (len(traces_y), 1, 24,24,14))
+#    traces_y = np.reshape(traces_y, (len(traces_y), 1, 24,24,14))
             
     print('#act: \t'+str(no_act))
     print('#constraints: \t'+str(no_con))
