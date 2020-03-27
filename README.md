@@ -30,17 +30,22 @@ Y-axes: average precision
 
 X-axes CONVLSTM: kernel size
 
-###CONVLSTMs - Fixed number of windows:
+### CONVLSTMs - Fixed number of windows:
 
 BPI 12, 2 windows:
 ![BPI 12, 2 windows](/results/CONVbpi122.png)
+BPI 12, 5 windows:
 ![BPI 12, 5 windows](/results/CONVbpi125.png)
+BPI 12, 10 windows:
 ![BPI 12, 10 windows](/results/CONVbpi1210.png)
+BPI 17, 2 windows:
 ![BPI 17, 2 windows](/results/CONVbpi172.png)
+BPI 17, 5 windows:
 ![BPI 17, 5 windows](/results/CONVbpi175.png)
+BPI 17, 10 windows:
 ![BPI 17, 10 windows](/results/CONVbpi1710.png)
 
-###Encoder-decoder LSTMs - Fixed number of windows:
+### Encoder-decoder LSTMs - Fixed number of windows:
 ![BPI 12, 2 windows](/results/DEbpi122.png)
 ![BPI 12, 5 windows](/results/DEbpi125.png)
 ![BPI 12, 10 windows](/results/DEbpi1210.png)
@@ -48,7 +53,7 @@ BPI 12, 2 windows:
 ![BPI 17, 5 windows](/results/DEbpi175.png)
 ![BPI 17, 10 windows](/results/DEbpi1710.png)
 
-###CONVLSTMs - Window size 2:
+### CONVLSTMs - Window size 2:
 ![BPI 12, 2 windows](/results/CONVbpi12210u20.png)
 ![BPI 12, 2 windows](/results/CONVbpi12220u30.png)
 ![BPI 12, 2 windows](/results/CONVbpi12230u40.png)
@@ -61,7 +66,7 @@ BPI 12, 2 windows:
 ![BPI 17, 2 windows](/results/CONVbpi17240u50.png)
 ![BPI 17, 2 windows](/results/CONVbpi17250u60.png)
 
-###CONVLSTMs - Window size 5:
+### CONVLSTMs - Window size 5:
 ![BPI 12, 2 windows](/results/CONVbpi12510u20.png)
 ![BPI 12, 2 windows](/results/CONVbpi12520u30.png)
 ![BPI 12, 2 windows](/results/CONVbpi12530u40.png)
@@ -74,6 +79,6 @@ BPI 12, 2 windows:
 ![BPI 17, 2 windows](/results/CONVbpi17540u50.png)
 ![BPI 17, 2 windows](/results/CONVbpi17550u60.png)
 
-###Encoder-decoder LSTMs - fixed window length:
+### Encoder-decoder LSTMs - fixed window length:
 ![BPI 12](/results/DEbpi12.png)
 ![BPI 12](/results/DEbpi17.png)
