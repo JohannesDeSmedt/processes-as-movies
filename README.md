@@ -128,7 +128,7 @@ BPI 17, 5 windows:
 BPI 17, 6 windows:
 ![BPI 17, 2 windows](/results/CONVbpi171050u60.png)
 
-### Encoder-decoder LSTMs - fixed window length:
+### Encoder-decoder LSTMs - Fixed window length:
 BPI 12:
 ![BPI 12](/results/DEbpi12.png)
 BPI 17:
