@@ -60,31 +60,76 @@ BPI 17, 10 windows:
 ![BPI 17, 10 windows](/results/DEbpi1710.png)
 
 ### CONVLSTMs - Window size 2:
+BPI 12, 6-10 windows:
 ![BPI 12, 2 windows](/results/CONVbpi12210u20.png)
+BPI 12, 11-15 windows:
 ![BPI 12, 2 windows](/results/CONVbpi12220u30.png)
+BPI 12, 16-20 windows:
 ![BPI 12, 2 windows](/results/CONVbpi12230u40.png)
+BPI 12, 21-25 windows:
 ![BPI 12, 2 windows](/results/CONVbpi12240u50.png)
+BPI 12, 26-30 windows:
 ![BPI 12, 2 windows](/results/CONVbpi12250u60.png)
 
+BPI 17, 6-10 windows:
 ![BPI 17, 2 windows](/results/CONVbpi17210u20.png)
+BPI 17, 11-15 windows:
 ![BPI 17, 2 windows](/results/CONVbpi17220u30.png)
+BPI 17, 16-20 windows:
 ![BPI 17, 2 windows](/results/CONVbpi17230u40.png)
+BPI 17, 21-25 windows:
 ![BPI 17, 2 windows](/results/CONVbpi17240u50.png)
+BPI 17, 26-30 windows:
 ![BPI 17, 2 windows](/results/CONVbpi17250u60.png)
 
 ### CONVLSTMs - Window size 5:
+BPI 12, 3-4 windows:
 ![BPI 12, 2 windows](/results/CONVbpi12510u20.png)
+BPI 12, 5-6 windows:
 ![BPI 12, 2 windows](/results/CONVbpi12520u30.png)
+BPI 12, 7-8 windows:
 ![BPI 12, 2 windows](/results/CONVbpi12530u40.png)
+BPI 12, 9-10 windows:
 ![BPI 12, 2 windows](/results/CONVbpi12540u50.png)
+BPI 12, 11-12 windows:
 ![BPI 12, 2 windows](/results/CONVbpi12550u60.png)
 
+BPI 17, 3-4 windows:
 ![BPI 17, 2 windows](/results/CONVbpi17510u20.png)
+BPI 17, 5-6 windows:
 ![BPI 17, 2 windows](/results/CONVbpi17520u30.png)
+BPI 17, 7-8 windows:
 ![BPI 17, 2 windows](/results/CONVbpi17530u40.png)
+BPI 17, 9-10 windows:
 ![BPI 17, 2 windows](/results/CONVbpi17540u50.png)
+BPI 17, 11-12 windows:
 ![BPI 17, 2 windows](/results/CONVbpi17550u60.png)
 
+### CONVLSTMs - Window size 10:
+BPI 12, 2 windows:
+![BPI 12, 2 windows](/results/CONVbpi121010u20.png)
+BPI 12, 3 windows:
+![BPI 12, 2 windows](/results/CONVbpi121020u30.png)
+BPI 12, 4 windows:
+![BPI 12, 2 windows](/results/CONVbpi121030u40.png)
+BPI 12, 5 windows:
+![BPI 12, 2 windows](/results/CONVbpi121040u50.png)
+BPI 12, 6 windows:
+![BPI 12, 2 windows](/results/CONVbpi121050u60.png)
+
+BPI 17, 2 windows:
+![BPI 17, 2 windows](/results/CONVbpi171010u20.png)
+BPI 17, 3 windows:
+![BPI 17, 2 windows](/results/CONVbpi171020u30.png)
+BPI 17, 4 windows:
+![BPI 17, 2 windows](/results/CONVbpi171030u40.png)
+BPI 17, 5 windows:
+![BPI 17, 2 windows](/results/CONVbpi171040u50.png)
+BPI 17, 6 windows:
+![BPI 17, 2 windows](/results/CONVbpi171050u60.png)
+
 ### Encoder-decoder LSTMs - fixed window length:
+BPI 12:
 ![BPI 12](/results/DEbpi12.png)
+BPI 17:
 ![BPI 12](/results/DEbpi17.png)
