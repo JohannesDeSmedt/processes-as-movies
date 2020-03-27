@@ -25,4 +25,11 @@ The Python files can be used for training a model, and the subsequent testing. T
 
 PAM makes use of [Keras](https://keras.io/) and [scikit-learn](https://scikit-learn.org/stable/).
 
-![Image description](/results/CONVbpi122.png)
+## Parameter results
+CONVLSTMs - Fixed window:
+![BPI 12, 2 windows](/results/CONVbpi122.png)
+![BPI 12, 5 windows](/results/CONVbpi125.png)
+![BPI 12, 10 windows](/results/CONVbpi1210.png)
+![BPI 17, 2 windows](/results/CONVbpi172.png)
+![BPI 17, 5 windows](/results/CONVbpi175.png)
+![BPI 17, 10 windows](/results/CONVbpi1710.png)
