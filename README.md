@@ -46,11 +46,17 @@ BPI 17, 10 windows:
 ![BPI 17, 10 windows](/results/CONVbpi1710.png)
 
 ### Encoder-decoder LSTMs - Fixed number of windows:
+BPI 12, 2 windows:
 ![BPI 12, 2 windows](/results/DEbpi122.png)
+BPI 12, 5 windows:
 ![BPI 12, 5 windows](/results/DEbpi125.png)
+BPI 12, 10 windows:
 ![BPI 12, 10 windows](/results/DEbpi1210.png)
+BPI 17, 2 windows:
 ![BPI 17, 2 windows](/results/DEbpi172.png)
+BPI 17, 5 windows:
 ![BPI 17, 5 windows](/results/DEbpi175.png)
+BPI 17, 10 windows:
 ![BPI 17, 10 windows](/results/DEbpi1710.png)
 
 ### CONVLSTMs - Window size 2:
