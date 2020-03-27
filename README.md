@@ -26,7 +26,11 @@ The Python files can be used for training a model, and the subsequent testing. T
 PAM makes use of [Keras](https://keras.io/) and [scikit-learn](https://scikit-learn.org/stable/).
 
 ## Parameter results
+Y-axes: average precision
+X-axes CONVLSTM: kernel size
+
 CONVLSTMs - Fixed number of windows:
+BPI 12, 2 windows:
 ![BPI 12, 2 windows](/results/CONVbpi122.png)
 ![BPI 12, 5 windows](/results/CONVbpi125.png)
 ![BPI 12, 10 windows](/results/CONVbpi1210.png)
