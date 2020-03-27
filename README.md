@@ -24,3 +24,5 @@ The Python files can be used for training a model, and the subsequent testing. T
 * `cutoff`: set to 1, it reads full traces, set to 2, it leaves a gap between input and output window
 
 PAM makes use of [Keras](https://keras.io/) and [scikit-learn](https://scikit-learn.org/stable/).
+
+![Image description](/results/CONVbpi122.png)
