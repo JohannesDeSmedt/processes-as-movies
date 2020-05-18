@@ -2,8 +2,11 @@
 
 This project provides both a Java-based feature generation procedure for generating Declare activity tensors from process execution logs, and Python code for building convolutional recurrent neural networks based over these tensors. 
 
+## Datasets
+Included in the [datasets](./datasets/) folder are both the datasets for BPI 12 and 17 event logs for a [fixed number of windows](./datasets/fixed_no_windows/) and a [fixed window size](./datasets/fixed_window_size).
+
 ## Feature generation
-The feature generation procedure uses [iBCM](https://feb.kuleuven.be/public/u0092789/) to find constraints present in execution traces, and stores them in a .txt file.
+The feature generation procedure uses [iBCM](https://github.com/JohannesDeSmedt/iBCM) to find constraints present in execution traces, and stores them in a .txt file.
 The d2v.jar file takes two arguments:
 * -w for the number of windows
 * -l for the event log (which should be XES-based (http://www.xes-standard.org/openxes/start), don't include the .xes extension)
