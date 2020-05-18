@@ -3,7 +3,7 @@
 This project provides both a Java-based feature generation procedure for generating Declare activity tensors from process execution logs, and Python code for building convolutional recurrent neural networks based over these tensors. 
 
 ## Datasets
-Included in the [datasets](./datasets/) folder are both the datasets for BPI 12 and 17 event logs for a [fixed number of windows](./datasets/fixed_no_windows/) and a [fixed window size](./datasets/fixed_window_size).
+Included in the [datasets](./datasets/) folder are both the datasets for BPI 12 and 17 event logs for a [fixed number of windows](./datasets/fixed_no_windows/) and a [fixed window size](./datasets/fixed_window_size). For the latter, the dataset is split into subsets depending on trace length.
 
 ## Feature generation
 The feature generation procedure uses [iBCM](https://github.com/JohannesDeSmedt/iBCM) to find constraints present in execution traces, and stores them in a .txt file.
@@ -13,25 +13,27 @@ The d2v.jar file takes two arguments:
 
 For example: `java -jar d2v.jar -w 10 -l BPI_Challenge_2012` 
 
-The logs used to create the datasets in /datasets are:
+The logs used to create the datasets in [datasets](./datasets/) are:
 * [BPI Challenge 2017](https://data.4tu.nl/repository/uuid:5f3067df-f10b-45da-b98b-86ae4c7a310b)
 * [BPI Challenge 2012](https://data.4tu.nl/repository/uuid:3926db30-f712-4394-aebc-75976070e91f)
-* [BPI Challenge 2013 - Incidents](https://data.4tu.nl/repository/uuid:500573e6-accc-4b0c-9576-aa5468b10cee)
 
 ## Convolutional recurrent neural network
+Two network topologies (encoder-decoder LSTMS, and convolutional LSTMs) are presented to train either an input of a fixed number of windows, or a fixed window length:
+* [run_de_lstms.py](run_delstms.py) initiates an encoder-decoder LSTM model with various parameters, and uses [train_de_lstms.py](train_de_lstms.py) for calculations.
+* [run_conv_lstms.py](run_conv_lstms.py) initiates a convolutational LSTM model with various parameters, and uses [train_conv2d_lstms.py](train_conv2d_lstms.py) for calculations.
+
 The Python files can be used for training a model, and the subsequent testing. There are a number of parameters, which can be set in the code itself:
 * `filt`: number of filters to be used for max pooling
 * `ks`: kernel size
 * `no_lstms`: additional layers of CONVLSTMs
 * `no_epochs`: the number of epochs to traing over the network
-* `cutoff`: set to 1, it reads full traces, set to 2, it leaves a gap between input and output window
 
-PAM makes use of [Keras](https://keras.io/) and [scikit-learn](https://scikit-learn.org/stable/).
+PAM makes use of [Keras](https://keras.io/), [Numpy](https://numpy.org/), and [scikit-learn](https://scikit-learn.org/stable/).
 
 ## Parameter results
-Y-axes: average precision
+y-axes: average precision
 
-X-axes CONVLSTM: kernel size
+x-axes CONVLSTM: kernel size
 
 ### CONVLSTMs - Fixed number of windows:
 
