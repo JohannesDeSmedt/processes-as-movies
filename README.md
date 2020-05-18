@@ -23,10 +23,19 @@ Two network topologies (encoder-decoder LSTMS, and convolutional LSTMs) are pres
 * [run_conv_lstms.py](run_conv_lstms.py) initiates a convolutational LSTM model with various parameters, and uses [train_conv2d_lstms.py](train_conv2d_lstms.py) for calculations.
 
 The Python files can be used for training a model, and the subsequent testing. There are a number of parameters, which can be set in the code itself:
+* `no_epochs`: the number of epochs to traing over the network
+* `act_reg`: activity regularisation
+* `kern_reg`: kernel regularisation
+* `no_lstms`: additional layers of (CONV)LSTMs
+
+Encoder-decoder LSTMs:
+* `ld`: dimensionality of the encoding
+
+Convolutional LSTMs:
 * `filt`: number of filters to be used for max pooling
 * `ks`: kernel size
-* `no_lstms`: additional layers of CONVLSTMs
-* `no_epochs`: the number of epochs to traing over the network
+
+To run the code successfully, create a `./models/`, `./data_conv2d/`, and `./data_de/` folder in the working directory.
 
 PAM makes use of [Keras](https://keras.io/), [Numpy](https://numpy.org/), and [scikit-learn](https://scikit-learn.org/stable/).
 
