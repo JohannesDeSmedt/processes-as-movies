@@ -19,7 +19,7 @@ The logs used to create the datasets in [datasets](./datasets/) are:
 
 ## Convolutional recurrent neural network
 Two network topologies (encoder-decoder LSTMS, and convolutional LSTMs) are presented to train either an input of a fixed number of windows, or a fixed window length:
-* [run_de_lstms.py](run_delstms.py) initiates an encoder-decoder LSTM model with various parameters, and uses [train_de_lstms.py](train_de_lstms.py) for calculations.
+* [run_de_lstms.py](run_de_lstms.py) initiates an encoder-decoder LSTM model with various parameters, and uses [train_de_lstms.py](train_de_lstms.py) for calculations.
 * [run_conv_lstms.py](run_conv_lstms.py) initiates a convolutational LSTM model with various parameters, and uses [train_conv2d_lstms.py](train_conv2d_lstms.py) for calculations.
 
 The Python files can be used for training a model, and the subsequent testing. There are a number of parameters, which can be set in the code itself:
